@@ -52,7 +52,7 @@ const Slider: FC<ISlider> = ({variants, handleChangeVariant}) => {
       >
         {variants.map((item: any, idx: number) => <SwiperSlide key={idx} style={{height: 'auto'}}>
           <ImgWrap>
-            <Image src={`${APP_API}${item.images.data[0].attributes.url}`} fill alt="" />
+            <Image src={item.images.data[0].attributes.url} fill alt="" />
           </ImgWrap>
         </SwiperSlide>)}
       </Swiper>

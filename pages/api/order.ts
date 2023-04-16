@@ -29,7 +29,7 @@ export default async function handler(
           item.count *
           item.variants[0].countInPack).toFixed(2),
       countInPack: item.variants[0].countInPack,
-      imageUrl: APP_API + item.variants[0].images.data[0].attributes.url,
+      imageUrl: item.variants[0].images.data[0].attributes.url,
     });
   });
 
