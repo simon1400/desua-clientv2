@@ -43,13 +43,13 @@ const Checkout: NextPage = () => {
   }, [basket]);
 
   const [shiping, setShiping] = useState({
-    name: "Dmytro Pechunka",
-    email: "dmytro@pechunka.com",
-    phone: "+420774048983",
-    company: "Hardart",
-    zip: "61300",
-    city: "Brno",
-    address: "Bendlova 1114/29",
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    zip: "",
+    city: "",
+    address: "",
     state: "Italy",
   });
 
@@ -61,14 +61,14 @@ const Checkout: NextPage = () => {
   };
 
   const [billing, setBilling] = useState({
-    name: "Dmytro Pechunka 1",
-    email: "pechunka11@gmail.com",
-    phone: "+420774048983 1",
-    company: "Hardart 1",
-    zip: "61300 1",
-    city: "Brno 1",
-    address: "Bendlova 1114/29 1",
-    state: "Italy 1",
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    zip: "",
+    city: "",
+    address: "",
+    state: "Italy",
   });
 
   const handleBilling = (name: string, value: string) => {

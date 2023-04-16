@@ -1,5 +1,5 @@
 import ButtonCount from "components/ButtonCount"
-import { DanwerItemS } from "./styled"
+import { DanwerItemS, ImgWrap } from "./styled"
 import Image from "next/image"
 import { IconButton, Typography } from "@mui/material"
 import CloseIcon from '@mui/icons-material/Close';
@@ -37,9 +37,9 @@ const DanwerItem: FC<IDanwerItem> = ({data}) => {
       <div className="count-wrap">
         <ButtonCount handleChange={handleChange} count={count} vertical />
       </div>
-      <div>
-        <Image src={`${APP_API}${data.variants[0].images.data[0].attributes.url}`} width="76" height="76" alt="" />
-      </div>
+      <ImgWrap>
+        <Image src={data.variants[0].images.data[0].attributes.url} fill alt="" />
+      </ImgWrap>
       <div className="danwer-item-body">
         <Typography variant="h4">{data.title}</Typography>
         <small>€ {localePrice} x {data.variants[0].countInPack} x {data.count}</small>

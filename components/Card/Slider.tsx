@@ -7,8 +7,6 @@ import Image from "next/image";
 import Chip from "components/Chip";
 import { useState } from "react";
 
-const APP_API = process.env.APP_API
-
 interface ISlider {
   data?: any;
   handleChangeVariant: (idx: number) => void

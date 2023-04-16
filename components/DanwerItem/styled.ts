@@ -22,12 +22,23 @@ export const DanwerItemS = styled.div(({theme}) => `
     line-height: 1.5;
     color: rgb(125, 135, 156);
   }
-  img{
-    margin: 0 16px;
-  }
   h4{
     font-weight: 600;
     font-size: 14px;
     line-height: 1.5;
   }
 `)
+
+export const ImgWrap = styled.div`
+  width: 75px;
+  min-width: 75px;
+  height: 75px;
+  position: relative;
+  margin: 0 16px;
+  img{
+    position: relative;
+    object-fit: contain;
+    object-position: center;
+
+  }
+`

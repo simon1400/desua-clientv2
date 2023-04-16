@@ -22,7 +22,7 @@ const Slider: FC<ISlider> = ({data}) => {
       >
         {data.map((item: string, idx: number) => <SwiperSlide key={idx} style={{height: 'auto'}}>
           <ImgWrap>
-            <Image src={`${APP_API}${item}`} fill alt="" />
+            <Image src={item} fill alt="" />
           </ImgWrap>
         </SwiperSlide>)}
       </Swiper>
