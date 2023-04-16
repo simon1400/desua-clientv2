@@ -30,7 +30,9 @@ const Slider: FC<ISlider> = ({variants, handleChangeVariant}) => {
   const [index, setIndex] = useState<number>(0)
 
   const handleClick = (idx: number) => {
+    // @ts-ignore
     if(swiperRef.current?.swiper) {
+      // @ts-ignore
       swiperRef.current.swiper.slideTo(idx)
       setIndex(idx)
       handleChangeVariant(idx)
