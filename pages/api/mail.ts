@@ -4,7 +4,7 @@ import {orderMail} from '../../mail-templates/order';
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
 
 const mailersend = new MailerSend({
-  apiKey: process.env.MAILERSEND_TOKEN,
+  apiKey: process.env.MAILERSEND_TOKEN || '',
 });
 
 const sentFrom = new Sender("info@desua.cz", "DESUA.CZ - Czech shop");
@@ -37,7 +37,7 @@ export default async function handler(
       await mailersend.email.send(emailParams);
   
       res.status(200).send('Email sent')
-    } catch(err) {
+    } catch(err: any) {
       console.error('ERRORRR --- ', err)
       if(err.response?.body){
         res.status(err.code).json(err.response?.body);
