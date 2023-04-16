@@ -1,10 +1,22 @@
+import { FC } from "react"
 import { PriceS } from "./styled"
+import { getPrice } from "helpers/getPrice"
 
-const Price = () => {
+interface IPrice {
+  big?: boolean
+  data: {
+    endPrice?: number
+    salePrice?: number
+    margin?: number
+    price: number
+  }
+}
+
+const Price: FC<IPrice> = ({data, big = false}) => {
   return (
-    <PriceS>
-      <span>297,50 $</span>
-      <del>350,00 $</del>
+    <PriceS big={big}>
+      <span>€ {data.salePrice ? data.salePrice.toFixed(2) : getPrice(data)}</span>
+      {data.salePrice && <del>€ {getPrice(data)}</del>}
     </PriceS>
   )
 }

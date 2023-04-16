@@ -7,11 +7,24 @@ import Image from "next/image";
 import Chip from "components/Chip";
 import { useState } from "react";
 
+const APP_API = process.env.APP_API
+
 interface ISlider {
   data?: any;
+  handleChangeVariant: (idx: number) => void
+  variants: {
+    images: {
+      data: {
+        attributes: {
+          url: string
+        }
+      }[]
+    }
+    title: string
+  }[]
 }
 
-const Slider: FC<ISlider> = ({}) => {
+const Slider: FC<ISlider> = ({variants, handleChangeVariant}) => {
 
   const swiperRef = useRef(null);
   const [index, setIndex] = useState<number>(0)
@@ -20,6 +33,7 @@ const Slider: FC<ISlider> = ({}) => {
     if(swiperRef.current?.swiper) {
       swiperRef.current.swiper.slideTo(idx)
       setIndex(idx)
+      handleChangeVariant(idx)
     }
   }
 
@@ -27,27 +41,21 @@ const Slider: FC<ISlider> = ({}) => {
     <SliderWrap>
       <Swiper
         ref={swiperRef}
-        onActiveIndexChange={index => setIndex(index.activeIndex)}
+        onActiveIndexChange={index => {setIndex(index.activeIndex); handleChangeVariant(index.activeIndex)}}
         style={{
           overflow: "visible",
         }}
         spaceBetween={0}
         slidesPerView={1}
       >
-        <SwiperSlide style={{height: 'auto'}}>
+        {variants.map((item: any, idx: number) => <SwiperSlide key={idx} style={{height: 'auto'}}>
           <ImgWrap>
-            <Image src="/img/flash-1.webp" fill alt="" />
+            <Image src={`${APP_API}${item.images.data[0].attributes.url}`} fill alt="" />
           </ImgWrap>
-        </SwiperSlide>
-        <SwiperSlide style={{height: 'auto'}}>
-          <ImgWrap>
-            <Image src="/img/flash-1.webp" fill alt="" />
-          </ImgWrap>
-        </SwiperSlide>
+        </SwiperSlide>)}
       </Swiper>
       <SliderVariants>
-        <Chip label="varia" onClick={() => handleClick(0)} variant={index === 0 ? 'filled' : 'outlined'}/>
-        <Chip label="varia" onClick={() => handleClick(1)} variant={index === 1 ? 'filled' : 'outlined'} />
+        {variants.map((item: any, idx: number) => <Chip key={idx} label={item.title} onClick={() => handleClick(idx)} variant={index === idx ? 'filled' : 'outlined'}/>)}
       </SliderVariants>
     </SliderWrap>
   );

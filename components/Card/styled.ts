@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Link from "next/link";
 
 export const CardS = styled.div(({theme}) => `
   overflow: hidden;
@@ -21,25 +20,6 @@ export const ChipCardWrap = styled.div`
   top: 8px;
   z-index: 2;
 `
-
-export const ButtonCountS = styled.div(({theme}) => `
-  display: flex;
-  button{
-    width: 28px;
-    min-width: 28px;
-    height: 28px;
-  }
-  span{
-    display: inline-block;
-    padding: 2px 5px 0;
-    font-weight: 600;
-    width: 28px;
-    text-align: center;
-    font-size: 14px;
-    height: 28px;
-    color: ${theme.palette.text.primary};
-  }
-`)
 
 export const ControlButtons = styled.div(({theme}) => `
   position: absolute;
@@ -63,17 +43,6 @@ export const ControlCard = styled.div`
   justify-content: space-between;
   align-items: center;
 `
-
-
-export const SwiperNav = styled.div(({theme}) => `
-  display: flex;
-  button{
-    border: none;
-    background: transparent;
-    transition: all .5s ease;
-    padding: 15px;
-  }
-`)
 
 export const SliderWrap = styled.div(({theme}) => `
   z-index: 1;

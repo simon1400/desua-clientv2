@@ -2,9 +2,11 @@ import { ApolloClient, createHttpLink, InMemoryCache, ApolloProvider, DefaultOpt
 import { setContext } from '@apollo/client/link/context';
 import Cookies from 'js-cookie'
 
+const APP_API = process.env.APP_API
+
 export function getStrapiURL(path = "") {
   return `${
-    process.env.APP_API || "http://localhost:1337"
+    APP_API || "http://localhost:1445"
   }${path}`;
 }
 
@@ -15,8 +17,6 @@ export async function fetchAPI(path: string) {
   const data = await response.json();
   return data;
 }
-
-const APP_API = process.env.APP_API
 
 const httpLink = createHttpLink({
   uri: `${APP_API}/graphql`,

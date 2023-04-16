@@ -4,19 +4,24 @@ import { HYDRATE } from "next-redux-wrapper";
 import { AppState } from 'stores';
 
 export interface NavState {
-  homepage: boolean
+  modal: boolean
+  danwer: boolean
 }
 
 const initialState: NavState = {
-  homepage: false
+  modal: false,
+  danwer: false
 }
 
 export const stateReducer = createSlice({
   name: 'state',
   initialState,
   reducers: {
-    changeHomepage: (state, action: PayloadAction<boolean>) => {
-      state.homepage = action.payload
+    changeModal: (state, action: PayloadAction<boolean>) => {
+      state.modal = action.payload
+    },
+    changeDanwer: (state, action: PayloadAction<boolean>) => {
+      state.danwer = action.payload
     }
   },
 
@@ -30,7 +35,7 @@ export const stateReducer = createSlice({
   },
 })
 
-export const { changeHomepage } = stateReducer.actions
+export const { changeModal, changeDanwer } = stateReducer.actions
 
 export const selectAllState = (state: AppState) => state.state;
 

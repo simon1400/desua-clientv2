@@ -1,9 +1,13 @@
 import { FC } from "react";
 import { InputS } from "./styled";
-import { InputAdornment, OutlinedInputProps } from "@mui/material";
+import { StandardTextFieldProps } from "@mui/material";
 
-const Input: FC<OutlinedInputProps> = ({ startAdornment, placeholder }) => {
-  return <InputS placeholder={placeholder} startAdornment={<InputAdornment position="start">{startAdornment}</InputAdornment>} />;
+interface IInput extends StandardTextFieldProps {
+  rounded?: boolean;
+}
+
+const Input: FC<IInput> = ({ label, placeholder, ...rest }) => {
+  return <InputS size="small" label={label} variant="outlined" placeholder={placeholder} {...rest} />;
 };
 
 export default Input;

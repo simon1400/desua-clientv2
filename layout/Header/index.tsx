@@ -12,7 +12,7 @@ const Header = () => {
       <Container>
         <HeaderS>
           <Logo />
-          <Search />
+          {/* <Search /> */}
           <ControlButtons />
         </HeaderS>
       </Container>

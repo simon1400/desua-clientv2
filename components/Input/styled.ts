@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
-import { OutlinedInput } from "@mui/material";
+import { TextField } from "@mui/material";
 
-export const InputS = styled(OutlinedInput)`
-  border-radius: 1200px;
-  height: 44px;
+export const InputS = styled(TextField)`
   width: 100%;
 `
