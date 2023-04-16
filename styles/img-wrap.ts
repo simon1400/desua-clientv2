@@ -13,7 +13,7 @@ export const ImgWrap = styled.div(({theme}) => `
   ${theme.breakpoints.down('md')} {
     margin-top: 40px;
     img{
-      position: relative!important;
+      /* position: relative!important; */
       margin-left: 0;
       width: 100%!important;
       margin-bottom: 0!important;

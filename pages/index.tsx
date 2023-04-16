@@ -61,7 +61,7 @@ const Homepage = () => {
       <Container>
         <Grid container spacing={4.8}>
           {products.map((item: any, idx: number) => (
-            <Grid key={idx} item xs={12} sm={3}>
+            <Grid key={idx} item xs={12} sm={4} md={3}>
               <Card data={item} />
             </Grid>
           ))}

@@ -8,6 +8,7 @@ export const getProducts = gql`
         attributes {
           title
           slug
+          unit
 					variants{
             id
             title

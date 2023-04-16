@@ -35,6 +35,7 @@ export const ContentCard = styled.div`
   padding: 16px;
   h3{
     margin-bottom: 8px;
+    height: 42px;
   }
 `
 
