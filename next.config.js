@@ -21,7 +21,7 @@ const nextConfig = {
     return config
   },
   images: {
-    domains: ['kersnerova-strapi.hardart.cz', 'localhost'],
+    domains: ['res.cloudinary.com', 'localhost'],
   },
 }
 
