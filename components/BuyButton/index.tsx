@@ -4,7 +4,8 @@ import ButtonCount from "components/ButtonCount";
 import { useDispatch, useSelector } from "react-redux";
 import { changeBasket, selectBasket } from "stores/slices/basket";
 import { changeCountProduct } from "helpers/changeCountProduct";
-import { removeEmpryItem } from "helpers/removeEmptyItem";
+// import { removeEmpryItem } from "helpers/removeEmptyItem";
+import useTranslation from "next-translate/useTranslation";
 
 interface IBuyButton {
   big?: boolean
@@ -14,6 +15,7 @@ interface IBuyButton {
 const BuyButton: FC<IBuyButton> = ({product, big = false}) => {
 
   const basket: BasketItem[] = useSelector(selectBasket)
+  const { t } = useTranslation('common')
 
   const [count, setCount] = useState<number>(0)
 
@@ -54,7 +56,7 @@ const BuyButton: FC<IBuyButton> = ({product, big = false}) => {
   return (
     <>
       {!!count && <ButtonCount handleChange={handleChange} count={count} big={big} />}
-      {count === 0 && <Button size={big ? "large" : "small"} onClick={() => buyFirst()}>Comprare</Button>}
+      {count === 0 && <Button size={big ? "large" : "small"} onClick={() => buyFirst()}>{t('buy')}</Button>}
     </>
   )
 }

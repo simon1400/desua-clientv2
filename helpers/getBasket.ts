@@ -22,6 +22,8 @@ export const getBasket = async (basket, basketItems, getBasketItems, locale) => 
     })
   })
 
+  console.log(unique)
+
   for (let i = 0; i < unique.length; i++) {
     const newBasketItems = await getBasketItems({
       variables: {
@@ -30,6 +32,8 @@ export const getBasket = async (basket, basketItems, getBasketItems, locale) => 
         variantTitle: unique[i].variantTitle,
       },
     });
+
+    console.log({newBasketItems})
 
     // @ts-ignore
     filteredBasketLocal.push({ 

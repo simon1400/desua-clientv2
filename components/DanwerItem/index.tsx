@@ -8,6 +8,7 @@ import { getPrice } from "helpers/getPrice";
 import { useDispatch, useSelector } from "react-redux";
 import { changeBasket, selectBasket } from "stores/slices/basket";
 import { changeCountProduct } from "helpers/changeCountProduct";
+import useTranslation from "next-translate/useTranslation";
 
 interface IDanwerItem {
   data: any
@@ -16,6 +17,8 @@ interface IDanwerItem {
 const APP_API = process.env.APP_API
 
 const DanwerItem: FC<IDanwerItem> = ({data}) => {
+
+  const { t } = useTranslation('common')
 
   const [count, setCount] = useState<number>(data.count)
   const dispatch = useDispatch()
@@ -42,8 +45,8 @@ const DanwerItem: FC<IDanwerItem> = ({data}) => {
       </ImgWrap>
       <div className="danwer-item-body">
         <Typography variant="h4">{data.title}</Typography>
-        <small>€ {localePrice} x {data.variants[0].countInPack} x {data.count}</small>
-        <span>€ {(localePrice * data.variants[0].countInPack * data.count).toFixed(2)}</span>
+        <small>{t("price", {price: localePrice})} x {t("countInPack", {count: data.variants[0].countInPack})} x {data.count}</small>
+        <span>{t("price", {price: (localePrice * data.variants[0].countInPack * data.count).toFixed(2)})}</span>
       </div>
       <div>
         <IconButton aria-label="close" size="small">

@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { wrapper } from "stores";
 import { changeCategoryNav } from "stores/slices/categoryNav";
 import { changeProducts, selectProducts } from "stores/slices/products";
+// import useTranslation from 'next-translate/useTranslation';
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
@@ -55,6 +56,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
 const Homepage = () => {
   const products = useSelector(selectProducts);
+  // const { t } = useTranslation("common")
 
   return (
     <Page>
@@ -63,6 +65,7 @@ const Homepage = () => {
           {products.map((item: any, idx: number) => (
             <Grid key={idx} item xs={12} sm={4} md={3}>
               <Card data={item} />
+              {/* {t("runVideo")} */}
             </Grid>
           ))}
         </Grid>

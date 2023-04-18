@@ -44,5 +44,7 @@ export default async function handler(
 
   const order = await axios.post(`${APP_API}/api/orders?populate=*`, {data: dataSend} )
 
+  console.log({order})
+
   res.status(200).json({...order.data.data.attributes});
 }

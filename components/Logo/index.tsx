@@ -1,10 +1,11 @@
 import Image from "next/image"
+import Link from "next/link"
 
 const Logo = () => {
   return (
-    <div>
+    <Link href="/">
       <Image src="/img/logo.png" height="30" width="140" alt="Desua logo" />
-    </div>
+    </Link>
   )
 }
 

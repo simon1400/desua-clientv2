@@ -14,6 +14,7 @@ import { getBasket } from "helpers/getBasket";
 import { getSum } from "helpers/getSum";
 import Page from "layout/Page";
 import { NextPage } from "next";
+import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import { getBasketProducts } from "queries/products";
 import { useEffect, useState } from "react";
@@ -25,6 +26,7 @@ const Checkout: NextPage = () => {
   const [getBasketItems] = useLazyQuery(getBasketProducts);
   const basket = useSelector(selectBasket);
   const router = useRouter();
+  const { t } = useTranslation('common')
 
   const dispatch = useDispatch();
 
@@ -81,18 +83,23 @@ const Checkout: NextPage = () => {
   const [sameAddress, setSameAddress] = useState(false);
 
   const handleOrder = async () => {
-    const order = await axios.post(`/api/order`, {
+    await axios.post(`/api/order`, {
       shiping,
       billing,
       sum,
       sameAddress,
       basket: basketItems,
+    }).then(res => {
+      console.log("res.data", res.data)
+      axios.post(`/api/mail`, { ...res.data.data }).then(() => {
+        dispatch(changeBasket([]));
+        router.push("/thank-you");
+      });
+    }).catch(err => {
+      console.log(err)
     });
 
-    axios.post(`/api/mail`, { ...order.data }).then((res) => {
-      dispatch(changeBasket([]));
-      router.push("/thank-you");
-    });
+    
   };
 
   return (
@@ -102,7 +109,7 @@ const Checkout: NextPage = () => {
           <Grid item xs={12} md={8}>
             <Paper elevation={1}>
               <Typography variant="h3" marginBottom={3}>
-                Indirizzo di spedizione
+                {t`shipping`}
               </Typography>
               <CheckoutInfo
                 state={shiping}
@@ -112,7 +119,7 @@ const Checkout: NextPage = () => {
             </Paper>
             <Paper elevation={1}>
               <Typography variant="h3" marginBottom={3}>
-                Indirizzo di Biling
+                {t`billing`}
               </Typography>
               <Box marginBottom={3}>
                 <FormControlLabel
@@ -122,7 +129,7 @@ const Checkout: NextPage = () => {
                       checked={sameAddress}
                     />
                   }
-                  label="Same as shipping address"
+                  label={t`sameShipping`}
                 />
               </Box>
               {!sameAddress && (

@@ -14,10 +14,12 @@ import { useLazyQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { getBasket } from "helpers/getBasket";
 import { getSum } from "helpers/getSum";
+import useTranslation from "next-translate/useTranslation";
 
 const openSans = Open_Sans({ subsets: ["latin", "cyrillic"] });
 
 const Danwer = () => {
+  const { t, lang } = useTranslation('common')
   const { danwer } = useSelector(selectAllState);
   const basket = useSelector(selectBasket);
   const dispatch = useDispatch();
@@ -55,7 +57,7 @@ const Danwer = () => {
           <div className="danwer-top">
             <div>
               <ShoppingBagOutlinedIcon fontSize="medium" />
-              <span>{basketItems.length} item</span>
+              <span>{basketItems.length} {t`item`}</span>
             </div>
             <div>
               <IconButton
@@ -74,7 +76,7 @@ const Danwer = () => {
           </div>
         </div>
         <DanwerButton>
-          <Button size="large" href="/checkout">Checkout Now (€ {getSum(basketItems)})</Button>
+          <Button size="large" href={`${lang}/checkout`}>{t`checkoutNow`} ({t("price", {price: getSum(basketItems)})})</Button>
           {/* <Button size="large" variant="outlined">
             View Cart
           </Button> */}

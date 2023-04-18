@@ -1,6 +1,7 @@
 import Input from "components/Input";
 import { CheckoutInfoS } from "./styled";
 import { FC } from "react";
+import useTranslation from "next-translate/useTranslation";
 
 interface ICheckoutInfo {
   prefix: string;
@@ -9,12 +10,13 @@ interface ICheckoutInfo {
 }
 
 const CheckoutInfo: FC<ICheckoutInfo> = ({ prefix, state, handle }) => {
+  const { t } = useTranslation('common')
   return (
     <CheckoutInfoS>
       <div>
         <Input
           name={prefix + "_name"}
-          label="Name"
+          label={t`name`}
           value={state.name}
           onChange={(e) => handle("name", e.target.value)}
         />
@@ -30,7 +32,7 @@ const CheckoutInfo: FC<ICheckoutInfo> = ({ prefix, state, handle }) => {
       <div>
         <Input
           name={prefix + "_phone"}
-          label="Phone"
+          label={t`phone`}
           value={state.phone}
           onChange={(e) => handle("phone", e.target.value)}
         />
@@ -38,7 +40,7 @@ const CheckoutInfo: FC<ICheckoutInfo> = ({ prefix, state, handle }) => {
       <div>
         <Input
           name={prefix + "_company"}
-          label="Company"
+          label={t`company`}
           value={state.company}
           onChange={(e) => handle("company", e.target.value)}
         />
@@ -46,7 +48,7 @@ const CheckoutInfo: FC<ICheckoutInfo> = ({ prefix, state, handle }) => {
       <div>
         <Input
           name={prefix + "_zip"}
-          label="Zip"
+          label={t`zip`}
           value={state.zip}
           onChange={(e) => handle("zip", e.target.value)}
         />
@@ -54,7 +56,7 @@ const CheckoutInfo: FC<ICheckoutInfo> = ({ prefix, state, handle }) => {
       <div>
         <Input
           name={prefix + "_city"}
-          label="City"
+          label={t`city`}
           value={state.city}
           onChange={(e) => handle("city", e.target.value)}
         />
@@ -62,7 +64,7 @@ const CheckoutInfo: FC<ICheckoutInfo> = ({ prefix, state, handle }) => {
       <div>
         <Input
           name={prefix + "_address"}
-          label="Address"
+          label={t`address`}
           value={state.address}
           onChange={(e) => handle("address", e.target.value)}
         />
@@ -71,7 +73,7 @@ const CheckoutInfo: FC<ICheckoutInfo> = ({ prefix, state, handle }) => {
         <Input
           name={prefix + "_state"}
           disabled
-          label="State"
+          label={t`state`}
           value={state.state}
           onChange={(e) => handle("state", e.target.value)}
           defaultValue="Italia"

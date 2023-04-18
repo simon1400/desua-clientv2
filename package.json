@@ -30,6 +30,7 @@
     "mailersend": "^2.0.5",
     "next": "13.3.0",
     "next-redux-wrapper": "^8.1.0",
+    "next-translate": "^2.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "^8.0.5",
@@ -40,6 +41,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@types/redux-persist": "^4.3.1"
+    "@types/redux-persist": "^4.3.1",
+    "next-translate-plugin": "^2.0.5"
   }
 }
