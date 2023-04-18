@@ -48,6 +48,10 @@ export const ControlCard = styled.div`
 export const SliderWrap = styled.div(({theme}) => `
   z-index: 1;
   position: relative;
+  .slider-img-wrap{
+    margin: 15px;
+    width: calc(100% - 30px);
+  }
 `)
 
 export const SliderVariants = styled.div(({theme}) => `
@@ -56,4 +60,7 @@ export const SliderVariants = styled.div(({theme}) => `
   display: flex;
   justify-content: center;
   gap: 8px;
+  > div{
+    opacity: .5;
+  }
 `)

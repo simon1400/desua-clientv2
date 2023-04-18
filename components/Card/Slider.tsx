@@ -49,13 +49,13 @@ const Slider: FC<ISlider> = ({variants, handleChangeVariant}) => {
         slidesPerView={1}
       >
         {variants.map((item: any, idx: number) => <SwiperSlide key={idx} style={{height: 'auto'}}>
-          <ImgWrap>
+          <ImgWrap className="slider-img-wrap">
             <Image src={item.images.data[0].attributes.url} fill alt="" />
           </ImgWrap>
         </SwiperSlide>)}
       </Swiper>
       <SliderVariants>
-        {variants.map((item: any, idx: number) => <Chip key={idx} label={item.title} onClick={() => handleClick(idx)} variant={index === idx ? 'filled' : 'outlined'}/>)}
+        {variants.map((item: any, idx: number) => <Chip color="secondary" key={idx} label={item.title} onClick={() => handleClick(idx)} variant={index === idx ? 'filled' : 'outlined'}/>)}
       </SliderVariants>
     </SliderWrap>
   );

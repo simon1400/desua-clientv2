@@ -34,7 +34,7 @@ export default async function handler(
   });
 
   const dataSend = {
-    billing, 
+    billing: sameAddress ? shiping : billing, 
     shiping, 
     sum, 
     sameAddress, 
@@ -43,8 +43,7 @@ export default async function handler(
   }
 
   const order = await axios.post(`${APP_API}/api/orders?populate=*`, {data: dataSend} )
+    .catch(err => console.log(err.response))
 
-  console.log({order})
-
-  res.status(200).json({...order.data.data.attributes});
+  res.status(200).json({...order?.data.data.attributes});
 }

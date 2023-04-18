@@ -90,15 +90,13 @@ const Checkout: NextPage = () => {
       sameAddress,
       basket: basketItems,
     }).then(res => {
-      console.log("res.data", res.data)
-      axios.post(`/api/mail`, { ...res.data.data }).then(() => {
+      axios.post(`/api/mail`, { ...res.data }).then(() => {
         dispatch(changeBasket([]));
         router.push("/thank-you");
       });
     }).catch(err => {
       console.log(err)
     });
-
     
   };
 
